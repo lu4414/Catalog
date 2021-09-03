@@ -43,7 +43,6 @@ namespace Catalog
                 return new MongoClient(settings.ConnectionString);
             });
             services.AddSingleton<IItemsRepository, MongoDbItemsRepository>(); //Note that here we replace the IInmemoryItemsRepository
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
