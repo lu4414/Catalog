@@ -40,7 +40,7 @@ namespace Catalog.Controllers
         }
         //POST / items
         [HttpPost] //comvention is return the object and the adress
-        public async Task<ActionResult<ItemDto>> CreateItemAsync(CreateItemDto itemDto)
+        public async Task<ActionResult<ItemDto>> CreateItem(CreateItemDto itemDto)
         {
             Item item = new(){
                 Id = Guid.NewGuid(),
