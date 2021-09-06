@@ -39,3 +39,6 @@ C:\Users\lucas.romano\Documents\ApiProject\Catalog\bin\Debug\net5.0\runtimes\win
 C:\Users\lucas.romano\Documents\ApiProject\Catalog\bin\Debug\net5.0\runtimes\linux\native\libmongocrypt.so
 C:\Users\lucas.romano\Documents\ApiProject\Catalog\bin\Debug\net5.0\runtimes\osx\native\libmongocrypt.dylib
 C:\Users\lucas.romano\Documents\ApiProject\Catalog\bin\Debug\net5.0\runtimes\win\native\mongocrypt.dll
+C:\Users\lucas.romano\Documents\ApiProject\Catalog\bin\Debug\net5.0\HealthChecks.MongoDb.dll
+C:\Users\lucas.romano\Documents\ApiProject\Catalog\bin\Debug\net5.0\Microsoft.Extensions.Diagnostics.HealthChecks.dll
+C:\Users\lucas.romano\Documents\ApiProject\Catalog\bin\Debug\net5.0\Microsoft.Extensions.Diagnostics.HealthChecks.Abstractions.dll
