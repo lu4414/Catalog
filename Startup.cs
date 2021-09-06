@@ -34,13 +34,12 @@ namespace Catalog
         {
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String)); //make this data human friendly
             BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
-
+              var mongoDbSettings = Configuration.
+              GetSection(nameof(MongoDbSettings)).
+              Get<MongoDbSettings>();
             services.AddSingleton<IMongoClient>(serviceProvider =>  //initialize the connection
-            {
-                var settings = Configuration.
-                GetSection(nameof(MongoDbSettings)). //point to our confug class
-                Get<MongoDbSettings>();
-                return new MongoClient(settings.ConnectionString);
+            {              
+                return new MongoClient(mongoDbSettings.ConnectionString);
             });
             services.AddSingleton<IItemsRepository, MongoDbItemsRepository>(); //Note that here we replace the IInmemoryItemsRepository
             services.AddControllers();
@@ -51,6 +50,8 @@ namespace Catalog
             services.AddControllers(options => {
                 options.SuppressAsyncSuffixInActionNames = false;
             });
+            services.AddHealthChecks()
+                    .AddMongoDb(mongoDbSettings.ConnectionString, name: "mongodb", timeout: TimeSpan.FromSeconds(3));
             
         }
 
@@ -73,6 +74,7 @@ namespace Catalog
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
     }
