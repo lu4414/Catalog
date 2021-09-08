@@ -1,17 +1,14 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using System.Text;
 using Catalog.Repositories;
 using Catalog.Settings;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization;
@@ -31,7 +28,40 @@ namespace Catalog
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {
+        {   
+
+
+            services.AddSingleton<IMongoClient>(ServiceProvider => {
+                var settings = Configuration.
+                GetSection(nameof(UserDbSettings)).
+                Get<UserDbSettings>();
+                return new MongoClient(settings.ConnectionString);
+            });
+
+
+
+            services.AddCors();
+            services.AddControllers();
+
+            var key = Encoding.ASCII.GetBytes("fedaf7d8863b48e197b9287d492b708e"); //pequena trapaça
+            services.AddAuthentication(x =>
+            {
+                 x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                 x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+         
             BsonSerializer.RegisterSerializer(new GuidSerializer(BsonType.String)); //make this data human friendly
             BsonSerializer.RegisterSerializer(new DateTimeOffsetSerializer(BsonType.String));
               var mongoDbSettings = Configuration.
@@ -63,14 +93,12 @@ namespace Catalog
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "Catalog v1"));
-            }
-            if(env.IsDevelopment())
-            {
-                app.UseHttpsRedirection();
-            }            
-
+                //app.UseHttpsRedirection();
+            }       
+            app.UseHttpsRedirection();
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -78,6 +106,8 @@ namespace Catalog
                 endpoints.MapControllers();
                 endpoints.MapHealthChecks("/health");
             });
+            
+            
         }
     }
 }

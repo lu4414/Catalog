@@ -6,9 +6,11 @@ using System;
 using System.Linq;
 using Catalog.Dtos;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Catalog.Controllers
 {   
+    [Authorize]
     [ApiController] //Brings additional behaviors to the class 
     [Route("items")]
     public class ItemsController : ControllerBase

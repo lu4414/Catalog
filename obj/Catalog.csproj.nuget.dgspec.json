@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog\\Catalog.csproj": {}
+    "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog-1\\Catalog.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog\\Catalog.csproj": {
+    "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog-1\\Catalog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog\\Catalog.csproj",
+        "projectUniqueName": "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog-1\\Catalog.csproj",
         "projectName": "Catalog",
-        "projectPath": "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog\\Catalog.csproj",
+        "projectPath": "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog-1\\Catalog.csproj",
         "packagesPath": "C:\\Users\\lucas.romano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog\\obj\\",
+        "outputPath": "C:\\Users\\lucas.romano\\Documents\\ApiProject\\Catalog-1\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -46,6 +46,14 @@
             "AspNetCore.HealthChecks.MongoDb": {
               "target": "Package",
               "version": "[5.0.1, )"
+            },
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.JwtBearer": {
+              "target": "Package",
+              "version": "[5.0.9, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
