@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "g1Dp3fCAGKQtSrNrJYptBMJg34Mtjn4hRZbOB70jDNiHWEgPwkIAcUy2qUIJTubF/jEXlnUZOoTJ9RTvCcBRVg==",
+  "dgSpecHash": "duwIili/PIcqUjwnrlyum/7Elfa0gyycG8ds8igTTbxWgnoA19qJrDFRx/y90C500ZuL6bSbbU5H10wXkJKi6g==",
   "success": true,
-  "projectFilePath": "C:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+  "projectFilePath": "c:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\lucas.romano\\.nuget\\packages\\aspnetcore.healthchecks.mongodb\\5.0.1\\aspnetcore.healthchecks.mongodb.5.0.1.nupkg.sha512",
     "C:\\Users\\lucas.romano\\.nuget\\packages\\dnsclient\\1.4.0\\dnsclient.1.4.0.nupkg.sha512",

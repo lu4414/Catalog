@@ -42,7 +42,7 @@ namespace Catalog.Api.Controllers
         }
         //POST / items
         [HttpPost] //convention is return the object and the adress
-        public async Task<ActionResult<ItemDto>> CreateItem(CreateItemDto itemDto)
+        public async Task<ActionResult<ItemDto>> CreateItemAsync(CreateItemDto itemDto)
         {
             Item item = new(){
                 Id = Guid.NewGuid(),
@@ -72,7 +72,7 @@ namespace Catalog.Api.Controllers
         // DEL / items / id
         public async Task<ActionResult> DeleteItem(Guid id)
         {
-             var existingItem = repository.GetItemAsync(id);
+            var existingItem = repository.GetItemAsync(id);
             if (existingItem is null)
             {
                 return NotFound();
@@ -81,5 +81,4 @@ namespace Catalog.Api.Controllers
             return NoContent();
         }
     }     
-
 }

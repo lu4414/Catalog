@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {}
+    "c:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {}
   },
   "projects": {
-    "C:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
+    "c:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "projectUniqueName": "c:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "projectName": "Catalog.Api",
-        "projectPath": "C:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
+        "projectPath": "c:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\Catalog.Api.csproj",
         "packagesPath": "C:\\Users\\lucas.romano\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\obj\\",
+        "outputPath": "c:\\Users\\lucas.romano\\Catalog\\Catalog.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
