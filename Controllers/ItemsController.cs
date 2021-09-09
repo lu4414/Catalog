@@ -15,7 +15,7 @@ namespace Catalog.Controllers
     [Route("items")]
     public class ItemsController : ControllerBase
     {
-        private readonly IItemsRepository repository; //Some bad choices will be made for didatical purposes
+        private readonly IItemsRepository repository;
 
         public ItemsController(IItemsRepository repository)
         {
@@ -69,16 +69,7 @@ namespace Catalog.Controllers
             await repository.UpdateItemAsync(updatedItem);
             return NoContent();
         }
-
-
-    [Authorize, (Roles="admin")]
-    [ApiController] //Brings additional behaviors to the class 
-    [Route("items")]
-    {
-        public class ItemsControllerAdmin : ControllerBase
-        // DEL /items /id
-        [Authorize(Roles = "manager")]
-        [HttpDelete("{id}")]
+        // DEL / items / id
         public async Task<ActionResult> DeleteItem(Guid id)
         {
              var existingItem = repository.GetItemAsync(id);
@@ -89,9 +80,6 @@ namespace Catalog.Controllers
             await repository.DeleteItemAsync(id);
             return NoContent();
         }
-    }
-  
-      
-    
+    }     
 
 }

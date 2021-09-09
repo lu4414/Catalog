@@ -28,18 +28,7 @@ namespace Catalog
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
-        {   
-
-
-            services.AddSingleton<IMongoClient>(ServiceProvider => {
-                var settings = Configuration.
-                GetSection(nameof(UserDbSettings)).
-                Get<UserDbSettings>();
-                return new MongoClient(settings.ConnectionString);
-            });
-
-
-
+        {       
             services.AddCors();
             services.AddControllers();
 
