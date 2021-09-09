@@ -41,7 +41,7 @@ namespace Catalog.Controllers
             return item.AsDto();
         }
         //POST / items
-        [HttpPost] //comvention is return the object and the adress
+        [HttpPost] //convention is return the object and the adress
         public async Task<ActionResult<ItemDto>> CreateItem(CreateItemDto itemDto)
         {
             Item item = new(){
@@ -69,7 +69,15 @@ namespace Catalog.Controllers
             await repository.UpdateItemAsync(updatedItem);
             return NoContent();
         }
+
+
+    [Authorize, (Roles="admin")]
+    [ApiController] //Brings additional behaviors to the class 
+    [Route("items")]
+    {
+        public class ItemsControllerAdmin : ControllerBase
         // DEL /items /id
+        [Authorize(Roles = "manager")]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteItem(Guid id)
         {
@@ -81,7 +89,9 @@ namespace Catalog.Controllers
             await repository.DeleteItemAsync(id);
             return NoContent();
         }
-      
     }
+  
+      
+    
 
 }
