@@ -1,5 +1,5 @@
 # REST API Project
-#Catalog of items for games
+Catalog of items for games
 
 Project based on the tutorial by Julio Casal on how to create an Web API using .NET 5, VS Code and C#.   
   The JWT implementation was made by me.  
