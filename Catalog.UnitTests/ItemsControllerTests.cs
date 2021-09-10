@@ -16,7 +16,7 @@ namespace Catalog.UnitTests
     public class ItemsControllerTest
     {
         private readonly Mock<IItemsRepository> repositoryStub = new();
-        private readonly Mock<ILogger<ItemsController>> loggerStub = new();
+        
         private readonly Random random=new();
 
         [Fact]
@@ -94,41 +94,6 @@ namespace Catalog.UnitTests
         createdItem.Id.Should().NotBeEmpty();
         
         } 
-
-        [Fact]
-        public async Task GetItemsAsyncByName_WithMathcingItems_ReturnsMatchingItems()
-        {
-            //Arrange
-            var allItems = new[]{
-                new Item(){Name ="mega Potion"},
-                new Item(){Name ="super Potion"},
-                new Item(){Name ="sword"}
-            };
-            var nameToMatch = "Potion";
-            
-            repositoryStub.Setup(repo => repo.GetItemsAsync())
-                           .ReturnsAsync(allItems);
-            var controller = new ItemsController(repositoryStub.Object);
-
-            //Act
-            IEnumerable<ItemDto> foundItems = await controller.GetItemAsync(nameToMatch)
-
-            //Assert
-            foundItems.Should().OnlyContain(
-                item => item.Name == allItems
-            )
-
-        }
-
-
-
-
-
-
-
-
-
-
         private Item CreateRandomItem()
         {
             return new(){

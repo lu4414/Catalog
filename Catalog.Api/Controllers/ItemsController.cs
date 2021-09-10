@@ -22,7 +22,7 @@ namespace Catalog.Api.Controllers
             this.repository = repository;
         }
 
-        [HttpGet] //Here is the verb indicating which methos is gonna be called 
+        [HttpGet] //Here is the verb indicating which method is gonna be called 
         public async Task<IEnumerable<ItemDto>> GetItemsAsync()
         {
             var items = (await repository.GetItemsAsync())
@@ -31,7 +31,7 @@ namespace Catalog.Api.Controllers
         }
         //ROUTE = GET /items/id
         [HttpGet("{id}")]
-        public async Task<ActionResult<ItemDto>> GetItemAsync(Guid id) //O ActionResult allow us to return more than one type of data (in our case null or Item) in a method
+        public async Task<ActionResult<ItemDto>> GetItemAsync(Guid id) //ActionResult allow us to return more than one type of data (in our case null or Item) in a method
         {
             var item = await repository.GetItemAsync(id);
             if(item is null)
