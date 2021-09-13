@@ -3,10 +3,14 @@ Project based on the tutorial by Julio Casal on how to create an Web API using .
   The JWT implementation was made by me.  
 My next steps:  
   Implement a MongoDB for persist user credentials  
-  Implement an interface for handling the database  
+  Implement an interface for handling the user database  
   Create new tests to cover the authentication part also  
-  Any other ideas? Please feel free to reach out :)  
- 
+  Any other ideas? Please feel free to reach out :)    
+  
+Some modifications  
+ Implemented a new folder structure
+ Refactoring of the DTOs
+
 Some mistakes:  
   The naming scheme on the commits should have been better  
   My own organization in folders on the Desktop also need some work  
