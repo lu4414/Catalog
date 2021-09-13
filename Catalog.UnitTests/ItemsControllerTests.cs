@@ -1,15 +1,15 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Catalog.Api.Controllers;
-using Catalog.Api.Dtos;
-using Catalog.Api.Entities;
-using Catalog.Api.Repositories;
 using FluentAssertions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Moq;
 using Xunit;
+using Catalog.Api.Repositories;
+using Catalog.Api.Entities;
+using Catalog.src.Controllers;
+using Catalog.Api.Dtos;
 
 namespace Catalog.UnitTests
 {
@@ -76,10 +76,8 @@ namespace Catalog.UnitTests
         public async Task CreateItemAsync_WithitemToCreate_ReturnsCreatedItem()
         {
         //Arrange
-        var itemToCreate = new CreateItemDto(){
-            Name = Guid.NewGuid().ToString(),
-            Price = random.Next(1000),
-        };
+        var itemToCreate = new CreateItemDto(Guid.NewGuid().ToString(),random.Next(1000));
+            
         var controller = new ItemsController(repositoryStub.Object);
 
         //Act
