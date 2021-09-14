@@ -7,8 +7,9 @@ using System.Linq;
 using Catalog.Api.Dtos;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
+using Catalog.Api;
 
-namespace Catalog.Api.Controllers
+namespace Catalog.src.Controllers
 {   
     [Authorize]
     [ApiController] //Brings additional behaviors to the class 
@@ -62,11 +63,10 @@ namespace Catalog.Api.Controllers
             {
                 return NotFound();
             }
-            Item updatedItem = existingItem with { //WITH EXPRESSIONS WE CREATE A COPY OF THE ITEM WITH ONLY THE MODIFICATIONS PASSED ON THE METHOD
-                Name = itemDto.Name,
-                Price = itemDto.Price
-            };
-            await repository.UpdateItemAsync(updatedItem);
+            existingItem.Name = itemDto.Name;
+            existingItem.Price = itemDto.Price;         
+            
+            await repository.UpdateItemAsync(existingItem);
             return NoContent();
         }
         // DEL / items / id
